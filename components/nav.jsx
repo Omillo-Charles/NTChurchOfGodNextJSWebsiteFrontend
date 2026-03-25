@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const ProfileSection = ({ isMobile = false }) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [imageError, setImageError] = useState(false);
     const { signOut } = useAuth();
 
     if (!mounted) {
@@ -32,12 +33,13 @@ const Navbar = () => {
         <div className="relative">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className={`flex items-center justify-center ${isMobile ? 'w-9 h-9' : 'w-10 h-10'} rounded-full transition-all duration-200 ${user.picture ? '' : 'bg-[#E02020] text-white'} hover:ring-2 hover:ring-offset-2 hover:ring-[#1E4E9A] focus:outline-none`}
+            className={`flex items-center justify-center ${isMobile ? 'w-9 h-9' : 'w-10 h-10'} rounded-full transition-all duration-200 ${(user.picture && !imageError) ? '' : 'bg-[#E02020] text-white'} hover:ring-2 hover:ring-offset-2 hover:ring-[#1E4E9A] focus:outline-none`}
           >
-            {user.picture ? (
+            {user.picture && !imageError ? (
               <img
                 src={user.picture}
                 alt={user.fullName}
+                onError={() => setImageError(true)}
                 className={`${isMobile ? 'w-9 h-9' : 'w-10 h-10'} rounded-full border-2 border-gray-300`}
               />
             ) : (

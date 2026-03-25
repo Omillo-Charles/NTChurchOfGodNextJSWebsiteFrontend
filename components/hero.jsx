@@ -8,6 +8,7 @@ const HeroSection = () => {
   const { isAuthenticated, user } = useAuth();
   const [mounted, setMounted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [imageError, setImageError] = useState(false);
 
   // Array of images from different folders
   const carouselImages = [
@@ -63,10 +64,11 @@ const HeroSection = () => {
           <div className="group relative bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold py-3 px-6 lg:px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-white/20 hover:shadow-xl hover:shadow-white/20 inline-flex items-center text-sm lg:text-base">
             <span className="flex items-center gap-2">
               <div className="flex items-center gap-2">
-                {user.picture && (
+                {user.picture && !imageError && (
                   <img
                     src={user.picture}
                     alt={user.fullName}
+                    onError={() => setImageError(true)}
                     className="w-5 h-5 lg:w-6 lg:h-6 rounded-full border border-white/50"
                   />
                 )}

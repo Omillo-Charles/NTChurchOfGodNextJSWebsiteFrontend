@@ -187,12 +187,12 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-[#1E4E9A] hover:text-[#163E7A] transition-colors duration-200 font-medium"
               >
-                OMYTECH
+                OMYT3CH
               </a>
             </p>
           </div>
         </div>
-      </div>
+      </div>s
     </footer>
   );
 };

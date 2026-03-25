@@ -70,8 +70,10 @@ export async function GET(request) {
             });
             await user.save();
         } else {
-            // Update last login
+            // Update user info with latest from Google
             user.lastLogin = new Date();
+            if (googleUser.name) user.fullName = googleUser.name;
+            if (googleUser.picture) user.picture = googleUser.picture;
             await user.save();
         }
 
