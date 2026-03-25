@@ -6,9 +6,9 @@ import { useAuth } from "../lib/auth";
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { isAuthenticated, user } = useAuth();
-  const [mounted, setMounted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageError, setImageError] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Array of images from different folders
   const carouselImages = [

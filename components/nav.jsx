@@ -8,20 +8,17 @@ import { useAuth } from "../lib/auth";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const { isAuthenticated, user } = useAuth();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const ProfileSection = ({ isMobile = false }) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [imageError, setImageError] = useState(false);
-    const { signOut } = useAuth();
+    const { isAuthenticated, user, signOut } = useAuth();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+      setMounted(true);
+    }, []);
 
     if (!mounted) {
-      // Show loading state
       return (
         <div className={`flex items-center justify-center ${isMobile ? 'w-9 h-9' : 'w-10 h-10'} bg-gray-300 rounded-full animate-pulse`}>
         </div>
